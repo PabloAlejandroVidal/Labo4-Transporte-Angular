@@ -1,0 +1,23 @@
+<div class="vehiculo-detalle-container">
+  <div *ngIf="vehiculo" class="vehiculo-card">
+    <div class="info-container">
+      <div class="info-field">
+        <span class="info-label">Nombre:</span>
+        <span class="info-value">{{vehiculo.nombre}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Tipo:</span>
+        <span class="info-value">{{vehiculo | tipoVehiculo}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">DNI:</span>
+        <span class="info-value">{{vehiculo.ruedasCantidad}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Nro Licencia:</span>
+        <span class="info-value">{{vehiculo.capacidadPromedia}}</span>
+      </div>
+
+  </div>
+
+</div>

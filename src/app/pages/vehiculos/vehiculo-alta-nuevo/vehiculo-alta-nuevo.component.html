@@ -1,0 +1,59 @@
+<div class="vehiculo-detalle-container">
+  <h3 class="component-title">Alta Vehículo</h3>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="vehiculo-card" >
+    <div class="info-container">
+      <div>
+        <div class="info-field">
+          <label class="info-label" for="nombre">Nombre </label>
+          <input class="info-value"
+          [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched" name="nombre" id="nombre" type="text" formControlName="nombre" [autocomplete]="false" autocomplete="false"/>
+        </div>
+        <div class="row-small" *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+          <small class="small-block" *ngIf="form.get('nombre')?.errors?.['required']">Este campo es obligatorio</small>
+          <small class="small-block" *ngIf="form.get('nombre')?.errors?.['lettersOnly']">Este campo debe contener sólo letras</small>
+        </div>
+      </div>
+
+      <div>
+        <div class="info-field">
+          <label class="info-label" for="tipo">Tipo</label>
+          <input class="info-value" [class.is-invalid]="form.get('tipo')?.invalid && form.get('tipo')?.touched" name="tipo" id="tipo" type="text" formControlName="tipo" />
+        </div>
+        <div class="row-small" *ngIf="form.get('tipo')?.invalid && form.get('tipo')?.touched">
+          <small class="small-block" *ngIf="form.get('tipo')?.errors?.['required']">Este campo es obligatorio</small>
+          <small class="small-block" *ngIf="form.get('tipo')?.errors?.['tipoVehiculo']">Este campo debe ser de un tipo válido ({{tiposValidos}})</small>
+        </div>
+      </div>
+
+      <div>
+        <div class="info-field">
+          <label class="info-label" for="ruedasCantidad">Cantidad de Ruedas</label>
+          <input class="info-value" [class.is-invalid]="form.get('ruedasCantidad')?.invalid && form.get('ruedasCantidad')?.touched" name="ruedasCantidad" id="ruedasCantidad" type="text" formControlName="ruedasCantidad" />
+        </div>
+        <div class="row-small" *ngIf="form.get('ruedasCantidad')?.invalid && form.get('ruedasCantidad')?.touched">
+          <small class="small-block" *ngIf="form.get('ruedasCantidad')?.errors?.['required']">Este campo es obligatorio</small>
+          <small class="small-block" *ngIf="form.get('ruedasCantidad')?.errors?.['numbersOnly']">Este campo debe contener sólo números</small>
+          <small class="small-block" *ngIf="form.get('ruedasCantidad')?.errors?.['min']">Este campo debe tener un valor de 2 o mas</small>
+          <small class="small-block" *ngIf="form.get('ruedasCantidad')?.errors?.['max']">Este campo debe tener un valor menor o igual a 6</small>
+        </div>
+      </div>
+
+      <div>
+        <div class="info-field">
+          <label class="info-label" for="capacidadPromedia">Capacidad Promedia</label>
+          <input class="info-value" [class.is-invalid]="form.get('capacidadPromedia')?.invalid && form.get('capacidadPromedia')?.touched" name="capacidadPromedia" id="capacidadPromedia" type="text" formControlName="capacidadPromedia" />
+        </div>
+        <div class="row-small" *ngIf="form.get('capacidadPromedia')?.invalid && form.get('capacidadPromedia')?.touched">
+          <small class="small-block" *ngIf="form.get('capacidadPromedia')?.errors?.['required']">Este campo es obligatorio</small>
+          <small class="small-block" *ngIf="form.get('capacidadPromedia')?.errors?.['numbersOnly']">Este campo debe contener sólo números</small>
+          <small class="small-block" *ngIf="form.get('capacidadPromedia')?.errors?.['min']">Este campo debe tener un valor de 2 o mas</small>
+          <small class="small-block" *ngIf="form.get('capacidadPromedia')?.errors?.['max']">Este campo debe tener un valor menor o igual a 100</small>
+        </div>
+      </div>
+
+      <button type="submit" class="add-button">Agregar Vehículo</button>
+
+    </div>
+  </form>
+
+</div>

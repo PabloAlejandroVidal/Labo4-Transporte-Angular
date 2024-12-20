@@ -1,0 +1,9 @@
+<div class="main-layout">
+  <header class="header-container">
+    <app-nav-bar [showMenu]="true" [menuBtnActive]="showSideMenu" (toggle)="onMenuClicked()" [routes]="routes" [showLogout]="showLogout" (logout)="onLogout()"></app-nav-bar>
+    <app-side-bar [btnVisible]="false" [routes]="routesSide" (toggle)="onMenuClicked()" [menuBtnActive]="showSideMenu"></app-side-bar>
+  </header>
+  <main class="main-container wof-container">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,30 @@
+<!-- <select [value]="selectedCountry" (change)="seleccionarPais($event)">
+  <option *ngFor="let pais of paises" [value]="pais.codigo">
+    {{ pais.nombre }}
+  </option>
+</select> -->
+
+<div class="select-container" (click)="onTouched()">
+  <div class="search-section">
+    <input class="search-input" [type]="'search'" [(ngModel)]="busqueda" [placeholder]="'Filtra por nombre de pais'" autocomplete="none">
+  </div>
+  <div class="options-section wof-container">
+    <div class="options-list">
+
+      <ng-container *ngFor="let pais of (busqueda && (paises | filtro: busqueda)) || paises">
+
+
+        <div class="option" [ngClass]="{'option-selected': (pais === selectedCountry)}" (click)="seleccionarPais(pais)">
+          <div class="option-container">
+            <input type="radio" name="country" (focus)="onTouched()" (blur)="onTouched()" [checked]="(pais === selectedCountry)">
+            <div class="flag-container">
+              <img class="flag-image" src="{{pais.flag}}" alt="bandera de {{pais.nombre}}">
+            </div>
+          </div>
+          <span title="{{pais.nombre}}" class="country-name">{{pais.nombre}}</span>
+        </div>
+
+      </ng-container>
+    </div>
+  </div>
+</div>

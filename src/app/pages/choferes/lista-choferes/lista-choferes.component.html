@@ -1,0 +1,100 @@
+<div class="page-container">
+  <h3 class="page-title">Lista de Choferes</h3>
+  <div class="table-container">
+
+      <div class="filters-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Buscar</mat-label>
+          <input matInput [(ngModel)]="searchText" (keyup)="applyFilter($event)" placeholder="Escribe algo...">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Buscar Por Nombre</mat-label>
+          <input matInput [(ngModel)]="searchByName" placeholder="Escribe el nombre o parte de él...">
+        </mat-form-field>
+      </div>
+
+    <table mat-table [dataSource]="dataSource | filtroPorNombre: searchByName: choferes" matSort class="mat-elevation-z8">
+
+      <!-- Columna: ID -->
+<!--       <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container> -->
+
+      <!-- Columna: Nombre -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      </ng-container>
+
+      <!-- Columna: Email -->
+      <ng-container matColumnDef="dni">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>DNI</th>
+        <td mat-cell *matCellDef="let element">{{ element | dniConPuntos }}</td>
+      </ng-container>
+
+      <!-- Columna: Email -->
+      <ng-container matColumnDef="edad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Edad</th>
+        <td mat-cell *matCellDef="let element">{{ element.edad }}</td>
+      </ng-container>
+
+      <!-- Columna: Email -->
+      <ng-container matColumnDef="nroLicencia">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nro Licencia</th>
+        <td mat-cell *matCellDef="let element">{{ element.nroLicencia }}</td>
+      </ng-container>
+
+      <!-- Columna: Email -->
+      <ng-container matColumnDef="licenciaProfecional">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Licencia</th>
+        <td mat-cell *matCellDef="let element">{{ element | hasLicenciaProfesional }}</td>
+      </ng-container>
+
+      <!-- Columna: Email -->
+      <ng-container matColumnDef="nacionalidad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nacionalidad</th>
+        <td mat-cell *matCellDef="let element">{{ element.nacionalidad }}</td>
+      </ng-container>
+
+      <!-- Columna: Descarga -->
+      <ng-container matColumnDef="descarga">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Información</th>
+        <td mat-cell *matCellDef="let element">
+          <!-- <button (click)="descargarPdf(element)">Descargar PDF</button> -->
+          <button appStopPropagation mat-flat-button color="primary" (click)="descargarPdf(element)">
+            Descargar Información
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Encabezado y Filas -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      class="row-pointer"
+      (click)="onSelect(row)"
+      [class.selected]="isSelected(row)">
+    </table>
+
+    <!-- Paginador -->
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
+  <div class="detalles">
+    <app-chofer-detalle [chofer]="selectedChofer"></app-chofer-detalle>
+    <app-pais-detalle [country]="selectedChoferCountry"></app-pais-detalle>
+  </div>
+
+  <div class="descarga-container">
+    <h3 class="component-title">Descarga de Registros</h3>
+      <div class="card" >
+      <div class="info-container">
+          <div class="info-field">
+            <button mat-flat-button color="primary" class="btn-descarga-pdfs" (click)="descargarPdfs()">Descargar Registro Completo</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+<div *ngIf="chofer" class="chofer-detalle-container">
+  <h3 class="component-title">Detalles del Chofer</h3>
+  <div class="chofer-card">
+    <div class="info-container">
+      <div class="info-field">
+        <span class="info-label">Nombre:</span>
+        <span class="info-value">{{chofer.nombre}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Edad:</span>
+        <span class="info-value">{{chofer.edad}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">DNI:</span>
+        <span class="info-value">{{chofer | dniConPuntos}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Nro Licencia:</span>
+        <span class="info-value">{{chofer.nroLicencia}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Licencia Profesional:</span>
+        <span class="info-value">{{chofer | hasLicenciaProfesional}}</span>
+      </div>
+
+  </div>
+
+</div>

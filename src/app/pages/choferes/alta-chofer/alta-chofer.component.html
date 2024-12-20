@@ -1,0 +1,81 @@
+<div class="page-container">
+  <h3 class="page-title">Alta Chofer</h3>
+  <div class="form-container">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form needs-validation" >
+
+      <div class="form-row">
+        <label class="form-label row-cell" for="nombre">Nombre </label>
+        <input class="form-input row-cell form-control"
+        [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched" name="nombre" id="nombre" type="text" formControlName="nombre" [autocomplete]="false" autocomplete="false"/>
+      </div>
+      <div class="row-small" *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+        <small class="small-block" *ngIf="form.get('nombre')?.errors?.['required']">Este campo es obligatorio</small>
+        <small class="small-block" *ngIf="form.get('nombre')?.errors?.['lettersOnly']">Este campo debe contener sólo letras</small>
+      </div>
+      <div class="form-row">
+        <label class="form-label row-cell" for="dni">DNI</label>
+        <input class="form-input row-cell form-control" [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched" name="dni" id="dni" type="text" formControlName="dni" />
+      </div>
+      <div class="row-small" *ngIf="form.get('dni')?.invalid && form.get('dni')?.touched">
+        <small class="small-block" *ngIf="form.get('dni')?.errors?.['required']">Este campo es obligatorio</small>
+        <small class="small-block" *ngIf="form.get('dni')?.errors?.['numbersOnly']">Este campo debe contener sólo números</small>
+        <small class="small-block" *ngIf="form.get('dni')?.errors?.['minlength']">Este campo debe tener 8 caracteres</small>
+        <small class="small-block" *ngIf="form.get('dni')?.errors?.['maxlength']">Este campo debe tener 8 caracteres</small>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label row-cell" for="edad">Edad</label>
+        <input class="form-input row-cell form-control" [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched" name="edad" id="edad" type="text" formControlName="edad" />
+      </div>
+      <div class="row-small" *ngIf="form.get('edad')?.invalid && form.get('edad')?.touched">
+        <small class="small-block" *ngIf="form.get('edad')?.errors?.['required']">Este campo es obligatorio</small>
+        <small class="small-block" *ngIf="form.get('edad')?.errors?.['numbersOnly']">Este campo debe contener sólo números</small>
+        <small class="small-block" *ngIf="form.get('edad')?.errors?.['min']">Este campo debe tener un valor mayor o igual a 18 o mas</small>
+        <small class="small-block" *ngIf="form.get('edad')?.errors?.['max']">Este campo debe tener un valor menor o igual a 50</small>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label row-cell" for="nroLicencia">Nº Licencia</label>
+        <input class="form-input row-cell form-control" [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched" name="nroLicencia" id="nroLicencia" type="text" formControlName="nroLicencia" />
+      </div>
+      <div class="row-small" *ngIf="form.get('nroLicencia')?.invalid && form.get('nroLicencia')?.touched">
+        <small class="small-block" *ngIf="form.get('nroLicencia')?.errors?.['required']">Este campo es obligatorio</small>
+        <small class="small-block" *ngIf="form.get('nroLicencia')?.errors?.['numbersOnly']">Este campo debe contener sólo números</small>
+        <small class="small-block" *ngIf="form.get('nroLicencia')?.errors?.['minlength']">Este campo debe tener 7 caracteres o mas</small>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="">Licencia Profesional</label>
+        <label class="input-label" for="licencia">
+          <span class="input-text">Si</span>
+          <input class="label-input" name="licencia" [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched" id="licencia" type="checkbox" formControlName="licencia">
+        </label>
+      </div>
+      <div class="row-small" *ngIf="form.get('licencia')?.invalid && form.get('licencia')?.touched">
+        <small class="small-block" *ngIf="form.get('licencia')?.errors?.['required']">Este campo es obligatorio</small>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="">Nacionalidad</label>
+        <label class="form-input row-cell" for="nacionalidad">
+          <app-selector-pais class="label-input" [filtroContinentes]="filtroContinentes" formControlName="nacionalidad"></app-selector-pais>
+        </label>
+      </div>
+      <div class="row-small" *ngIf="form.get('nacionalidad')?.invalid && form.get('nacionalidad')?.touched">
+        <small class="small-block" *ngIf="form.get('nacionalidad')?.errors?.['required']">Este campo es obligatorio</small>
+      </div>
+
+      <div class="form-row">
+        <button type="submit" class="form-input form-submit btn-design btn-design-form">Registrar Chofer</button>
+        <!-- <button type="submit" class="form-input form-submit btn-design btn-design-form" [disabled]="form.invalid">Registrar Chofer</button> -->
+      </div>
+
+
+      @if (msgResult) {
+      <div>
+        <p>{{msgResult}}</p>
+      </div>
+    }
+  </form>
+</div>

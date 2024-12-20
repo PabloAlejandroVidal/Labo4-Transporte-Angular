@@ -1,0 +1,26 @@
+<div *ngIf="country" class="country-detalle-container">
+  <h3 class="component-title">Detalles del País</h3>
+  <div class="country-card">
+    <div class="info-container">
+      <div class="info-field">
+        <span class="info-label">Nombre:</span>
+        <span class="info-value">{{country.nombre}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Codigo:</span>
+        <span class="info-value">{{country.codigo}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Continente:</span>
+        <span class="info-value">{{country.continente}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Bandera:</span>
+        <span class="info-value">
+          <img class="flag-image" src="{{country.flag}}" alt="bandera de {{country.nombre}}">
+        </span>
+      </div>
+
+  </div>
+
+</div>

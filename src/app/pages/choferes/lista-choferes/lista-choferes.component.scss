@@ -1,0 +1,83 @@
+
+.table-container {
+  margin: 16px;
+  overflow: auto;
+}
+.filters-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+  gap: 1em;
+  width: fit-content;
+}
+
+mat-header-cell, mat-cell {
+  padding: 8px;
+}
+
+.mat-elevation-z8 {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.row-pointer{
+  cursor: pointer;
+  &:hover{
+    background-color: rgba(0, 0, 255, 0.05); /* Cambia el color de fondo */
+  }
+}
+
+.mat-mdc-row.selected {
+  background-color: rgba(0, 0, 255, 0.1); /* Cambia el color de fondo */
+}
+
+.page-container{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.detalles{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: space-between;
+}
+
+
+
+.descarga-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+}
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  align-items: stretch;
+  padding: .1em;
+  gap: 1em;
+  width: 100%;
+  width: 22em; /* Limita el ancho máximo del card */
+  background-color: white;
+  border-radius: 0.4em;
+  overflow: hidden;
+}
+.info-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  background-color: #f9f9f9; /* Fondo claro */
+  padding: 1em;
+  border-radius: 0.4em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  font-family: Arial, sans-serif;
+}
+.info-field {
+  display: flex;
+  justify-content: center; /* Espacio entre label y valor */
+  padding: 0.5em 0;
+  border-bottom: 1px solid #ddd; /* Línea divisoria */
+}

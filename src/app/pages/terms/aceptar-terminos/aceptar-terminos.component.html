@@ -1,0 +1,24 @@
+<div class="terms-container">
+  <h2>Aceptar Términos y Condiciones</h2>
+  <form [formGroup]="termsForm" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+      <label for="edad">Edad:</label>
+      <input id="edad" type="number" formControlName="edad" />
+
+      <div class="row-small" *ngIf="termsForm.get('edad')?.invalid && termsForm.get('edad')?.touched">
+        <small class="small-block" *ngIf="termsForm.get('edad')?.errors?.['required']">La edad es obligatoria</small>
+        <small class="small-block" *ngIf="termsForm.get('edad')?.errors?.['pattern']">La edad debe ser un número válido</small>
+        <small class="small-block" *ngIf="termsForm.get('edad')?.errors?.['range']">La edad debe ser de entre 18 y 65 años</small>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>
+        <input type="checkbox" formControlName="aceptaTerminos" />
+        Acepto los términos y condiciones.
+      </label>
+    </div>
+
+    <button type="submit" [disabled]="!termsForm.valid">Continuar</button>
+  </form>
+</div>

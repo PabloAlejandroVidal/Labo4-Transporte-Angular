@@ -1,0 +1,41 @@
+  <div class="page-container">
+    <h3 class="page-title">Iniciar Sesión</h3>
+    <div class="form-container">
+      <div class="form-cover">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form" >
+
+          <div class="form-row">
+            <label class="form-label row-cell" for="email">Email</label>
+            <input class="form-input row-cell" name="email" id="email" type="email" formControlName="email" [autocomplete]="false" autocomplete="false"/>
+          </div>
+          <div class="row-small" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+            <small class="small-block" *ngIf="form.get('email')?.errors?.['required']">Este campo es obligatorio</small>
+            <small class="small-block" *ngIf="form.get('email')?.errors?.['minlength']">Debe tener al menos 8 caracteres</small>
+            <small class="small-block" *ngIf="form.get('email')?.errors?.['email']">Debe ser un correo electrónico válido</small>
+          </div>
+          <div class="form-row">
+            <label class="form-label row-cell" for="clave">Clave</label>
+            <input class="form-input row-cell" name="clave" id="clave" type="password" formControlName="clave" />
+          </div>
+          <div class="row-small" *ngIf="form.get('clave')?.invalid && form.get('clave')?.touched">
+            <small class="small-block" *ngIf="form.get('clave')?.errors?.['required']">Este campo es obligatorio</small>
+            <small class="small-block" *ngIf="form.get('clave')?.errors?.['minlength']">Debe tener al menos 6 caracteres</small>
+          </div>
+          <div class="form-row">
+            <button type="submit" class="form-input form-submit btn-design btn-design-form" [disabled]="false">Iniciar Sesión</button>
+          </div>
+
+          <div class="form-row">
+            <button class="form-input btn-design btn-design-form" type="button" (click)="loadUser(0)">Cargar Empleado</button>
+            <button class="form-input btn-design btn-design-form" type="button" (click)="loadAdmin(0)">Cargar Admin</button>
+          </div>
+
+          @if (msgResult) {
+          <div>
+            <p>{{msgResult}}</p>
+          </div>
+        }
+      </form>
+    </div>
+  </div>
+</div>

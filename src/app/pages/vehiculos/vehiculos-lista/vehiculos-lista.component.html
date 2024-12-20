@@ -1,0 +1,73 @@
+<div class="page-container">
+  <h3 class="page-title">Lista de Vehículos</h3>
+  <div class="table-container">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar</mat-label>
+      <input matInput [(ngModel)]="searchText" (keyup)="applyFilter($event)" placeholder="Escribe algo...">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+      <!-- Columna: ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <!-- Columna: Nombre -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      </ng-container>
+
+      <!-- Columna: Email -->
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+        <td mat-cell *matCellDef="let element">{{ element | tipoVehiculo }}</td>
+      </ng-container>
+
+      <!-- Columna: Email -->
+      <ng-container matColumnDef="ruedasCantidad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ruedas</th>
+        <td mat-cell *matCellDef="let element">{{ element.ruedasCantidad }}</td>
+      </ng-container>
+
+      <!-- Columna: Email -->
+      <ng-container matColumnDef="capacidadPromedia">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Capacidad Promedia</th>
+        <td mat-cell *matCellDef="let element">{{ element.capacidadPromedia }}</td>
+      </ng-container>
+
+      <!-- Encabezado y Filas -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      appColoredRow [tipo]="row.tipo"
+      class="row-pointer"
+      (click)="onSelect(row)"
+      [class.selected]="isSelected(row)">
+    </table>
+
+    <!-- Paginador -->
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
+  <div class="detalles">
+    <app-vehiculo-alta-nuevo></app-vehiculo-alta-nuevo>
+    <app-vehiculo-modificacion [vehiculo]="selectedVehiculo"></app-vehiculo-modificacion>
+    <app-vehiculo-baja [vehiculo]="selectedVehiculo"></app-vehiculo-baja>
+
+    <div class="descarga-container">
+      <h3 class="component-title">Descarga de Registros</h3>
+      <div class="card" >
+        <div class="info-container">
+          <div class="info-field">
+            <button mat-flat-button color="primary" class="btn-descarga-pdfs" (click)="descargarPdfs()">Descargar Registro Completo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

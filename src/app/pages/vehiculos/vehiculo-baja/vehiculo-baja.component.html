@@ -1,0 +1,27 @@
+<div *ngIf="vehiculo" class="vehiculo-detalle-container">
+  <h3 class="component-title">Baja Vehículo</h3>
+  <div class="vehiculo-card">
+    <div class="info-container">
+      <div class="info-field">
+        <span class="info-label">Nombre:</span>
+        <span class="info-value">{{vehiculo.nombre}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Tipo:</span>
+        <span class="info-value">{{vehiculo | tipoVehiculo}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">DNI:</span>
+        <span class="info-value">{{vehiculo.ruedasCantidad}}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Nro Licencia:</span>
+        <span class="info-value">{{vehiculo.capacidadPromedia}}</span>
+      </div>
+
+      <button (click)="confirmDelete()" class="delete-button">
+        Eliminar Vehículo
+      </button>
+  </div>
+
+</div>

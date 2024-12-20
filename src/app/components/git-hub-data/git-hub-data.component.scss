@@ -1,0 +1,50 @@
+
+.data-container{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 1em;
+  gap: 1em;
+  background-color: rgb(241, 255, 189);
+}
+
+.title {
+  text-align: center;
+  font-size: 1.8em;
+  color: #333;
+  font-weight: 700;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  display: block;
+  width: 6em;
+  height: 3px;
+  background-color: #007bff;
+  margin: 0.5em auto;
+  border-radius: 5px;
+}
+
+.text {
+  margin: 0;
+  text-align: left;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #555;
+  font-weight: 500;
+}
+
+.span {
+  font-weight: 700;
+  color: #007bff;
+}
+
+.img {
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease-out;
+}
+
+.img:hover {
+box-shadow: 0 0 10px 4px black;
+}
